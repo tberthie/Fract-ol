@@ -6,7 +6,7 @@
 /*   By: tberthie <tberthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/02 21:48:08 by tberthie          #+#    #+#             */
-/*   Updated: 2017/01/09 12:04:39 by tberthie         ###   ########.fr       */
+/*   Updated: 2017/01/09 22:13:03 by tberthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,7 @@ void			ft_lstpush(t_list **alst, t_list *new);
 char			*ft_itoabase(int n, char *b);
 void			ft_putunbr(unsigned int n);
 int				ft_freeret(void *p, int r);
+int				ft_errret(char *name, char *msg, int ret);
 int				ft_gnl(const int fd, char **line);
 int				ft_tablen(char **tab);
 

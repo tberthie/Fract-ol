@@ -1,4 +1,5 @@
 SRCS = main.c \
+	   setup.c
 
 OBJS = $(addprefix srcs/,$(SRCS:.c=.o))
 
