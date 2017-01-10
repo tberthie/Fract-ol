@@ -6,7 +6,7 @@
 /*   By: tberthie <tberthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/09 20:51:27 by tberthie          #+#    #+#             */
-/*   Updated: 2017/01/09 22:36:51 by tberthie         ###   ########.fr       */
+/*   Updated: 2017/01/10 11:34:54 by tberthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,11 @@ int			getfractal(char *str)
 
 int			main(int ac, char **av)
 {
+	t_fract		*fract;
+
 	if (ac != 2 || !getfractal(av[1]))
 		write(1, "usage: fractol [julia, mandelbrot]\n", 35);
-	else
-		setup(av[1][0]);
+	else if ((fract = setup(av[1][0])))
+		run(fract);
 	return (0);
 }
