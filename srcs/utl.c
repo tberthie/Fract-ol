@@ -1,35 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   setup.c                                            :+:      :+:    :+:   */
+/*   utl.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tberthie <tberthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/09 21:14:37 by tberthie          #+#    #+#             */
-/*   Updated: 2017/01/12 15:40:11 by tberthie         ###   ########.fr       */
+/*   Created: 2017/01/11 17:24:38 by tberthie          #+#    #+#             */
+/*   Updated: 2017/01/11 17:57:43 by tberthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol.h"
-
 #include <stdlib.h>
 
-t_fract		*setup(char type)
+char		*ito(long double nb)
 {
-	t_fract		*fract;
+	int				len;
+	long long		n;
+	char			*s;
 
-	if (!(fract = malloc(sizeof(t_fract))))
+	len = 1;
+	n = nb;
+	while (n >= 10 && (n /= 10))
+		len++;
+	if (!(s = malloc(sizeof(char) * (len + 1))))
 		return (0);
-	fract->type = type;
-	fract->zoom = 1;
-	fract->x = 0;
-	fract->y = 0;
-	fract->zr = 0;
-	fract->zi = 0;
-	fract->iter = ITER;
-	fract->bpp = 32;
-	fract->ls = WINX * 4;
-	fract->end = 0;
-	fract->lock = 0;
-	return (fract);
+	s[len--] = 0;
+	n = nb;
+	while (n >= 10)
+	{
+		s[len--] = n % 10 + '0';
+		n /= 10;
+	}
+	s[len] = n % 10 + '0';
+	return (s);
 }

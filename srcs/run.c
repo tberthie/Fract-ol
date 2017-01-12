@@ -6,7 +6,7 @@
 /*   By: tberthie <tberthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/10 11:30:13 by tberthie          #+#    #+#             */
-/*   Updated: 2017/01/10 15:26:29 by tberthie         ###   ########.fr       */
+/*   Updated: 2017/01/12 15:44:41 by tberthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,51 +15,30 @@
 
 #include <mlx.h>
 
-void		infos(t_fract *fract)
+void		draw(t_fract *fract)
 {
 	char	*tmp;
 
-	mlx_string_put(fract->mlx, fract->win, 0, 0, 0x00ff00, "ZOOM");
-	mlx_string_put(fract->mlx, fract->win, 50, 0, 0xffffff,
-	(tmp = ft_itoa(fract->zoom * 100)));
-	free(tmp);
-}
-
-void		draw(t_fract *fract)
-{
 	mlx_clear_window(fract->mlx, fract->win);
+	(fract->type == 'm') ? mandelbrot(fract) : 0;
+	(fract->type == 'j') ? julia(fract) : 0;
 	if (fract->type == 'm')
-		mandelbrot(fract);
-	infos(fract);
-}
-
-int			mouse(int button, int x, int y, void *param)
-{
-	draw(param);
-	return (1);
-}
-
-int			key(int keycode, void *param)
-{
-	t_fract		*fract;
-
-	fract = param;
-	if (keycode == 69 || (keycode == 78 && fract->zoom > 0.25))
-		fract->zoom *= keycode == 69 ? 2 : 0.5;
-	else if (keycode == 24 || (keycode == 27 && fract->iter > 25))
-		fract->iter *= keycode == 24 ? 2 : 0.5;
-	else if (keycode == 53)
-		exit(0);
-	else
-		 return (1);
-	draw(fract);
-	return (1);
-}
-
-int			expose(void *param)
-{
-	draw(param);
-	return (1);
+		mlx_string_put(fract->mlx, fract->win, 0, 0, 0x00ff00, "MANDELBROT");
+	if (fract->type == 'j')
+	{
+		mlx_string_put(fract->mlx, fract->win, 0, 0, 0x00ff00, "JULIA");
+		mlx_string_put(fract->mlx, fract->win, 0, 60, 0x00ff00, "LOCK");
+		mlx_string_put(fract->mlx, fract->win, 50, 60, 0xffffff,
+		fract->lock ? "1" : "0");
+	}
+	mlx_string_put(fract->mlx, fract->win, 0, 20, 0x00ff00, "ZOOM");
+	mlx_string_put(fract->mlx, fract->win, 50, 20, 0xffffff,
+	(tmp = ito(fract->zoom)));
+	free(tmp);
+	mlx_string_put(fract->mlx, fract->win, 0, 40, 0x00ff00, "ITER");
+	mlx_string_put(fract->mlx, fract->win, 50, 40, 0xffffff,
+	(tmp = ito(fract->iter)));
+	free(tmp);
 }
 
 void		run(t_fract *fract)
@@ -73,8 +52,9 @@ void		run(t_fract *fract)
 	fract->mlx = mlx;
 	fract->win = win;
 	draw(fract);
-	mlx_key_hook(win, key, fract);
-	mlx_expose_hook(win, expose, fract);
-	mlx_mouse_hook(win, mouse, fract);
+	mlx_hook(fract->win, 6, (1L << 6), move, fract);
+	mlx_key_hook(fract->win, key, fract);
+	mlx_mouse_hook(fract->win, mouse, fract);
+	mlx_expose_hook(fract->win, expose, fract);
 	mlx_loop(mlx);
 }
