@@ -6,7 +6,7 @@
 /*   By: tberthie <tberthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/12 12:41:18 by tberthie          #+#    #+#             */
-/*   Updated: 2017/01/12 16:22:53 by tberthie         ###   ########.fr       */
+/*   Updated: 2017/01/12 17:01:17 by tberthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ int		move(int x, int y, void *param)
 	t_fract		*fract;
 
 	fract = param;
-	if (fract->lock == 0 && fract->type == 'j')
+	if (fract->lock == 0 && (fract->type == 'j' || fract->type == 'x'))
 	{
 		fract->zr = 2 * ((long double)x - WINX / 2) / WINX;
 		fract->zi = 2 * ((long double)y - WINY / 2) / WINY;

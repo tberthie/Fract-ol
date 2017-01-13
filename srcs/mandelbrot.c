@@ -6,7 +6,7 @@
 /*   By: tberthie <tberthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/10 11:36:11 by tberthie          #+#    #+#             */
-/*   Updated: 2017/01/12 15:35:21 by tberthie         ###   ########.fr       */
+/*   Updated: 2017/01/13 17:24:08 by tberthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ static int		iter(t_fract *fract, long double x, long double y)
 	i = 0;
 	zr = 0;
 	zi = 0;
-	zrsq = zr * zr;
-	zisq = zi * zi;
+	zrsq = 0;
+	zisq = 0;
 	while (zrsq + zisq <= 4 && i < fract->iter)
 	{
 		zi = (zr + zi) * (zr + zi) - zrsq - zisq + y;

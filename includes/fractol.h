@@ -6,7 +6,7 @@
 /*   By: tberthie <tberthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/09 20:55:33 by tberthie          #+#    #+#             */
-/*   Updated: 2017/01/12 15:38:38 by tberthie         ###   ########.fr       */
+/*   Updated: 2017/01/13 17:41:25 by tberthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ void				draw(t_fract *fract);
 
 void				mandelbrot(t_fract *fract);
 void				julia(t_fract *fract);
+void				ship(t_fract *fract);
+void				bird(t_fract *fract);
 
 int					mouse(int button, int x, int y, void *param);
 int					key(int key, void *param);

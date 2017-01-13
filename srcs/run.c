@@ -6,7 +6,7 @@
 /*   By: tberthie <tberthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/10 11:30:13 by tberthie          #+#    #+#             */
-/*   Updated: 2017/01/12 15:44:41 by tberthie         ###   ########.fr       */
+/*   Updated: 2017/01/13 17:34:34 by tberthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,23 +22,22 @@ void		draw(t_fract *fract)
 	mlx_clear_window(fract->mlx, fract->win);
 	(fract->type == 'm') ? mandelbrot(fract) : 0;
 	(fract->type == 'j') ? julia(fract) : 0;
-	if (fract->type == 'm')
-		mlx_string_put(fract->mlx, fract->win, 0, 0, 0x00ff00, "MANDELBROT");
-	if (fract->type == 'j')
-	{
-		mlx_string_put(fract->mlx, fract->win, 0, 0, 0x00ff00, "JULIA");
-		mlx_string_put(fract->mlx, fract->win, 0, 60, 0x00ff00, "LOCK");
-		mlx_string_put(fract->mlx, fract->win, 50, 60, 0xffffff,
-		fract->lock ? "1" : "0");
-	}
-	mlx_string_put(fract->mlx, fract->win, 0, 20, 0x00ff00, "ZOOM");
-	mlx_string_put(fract->mlx, fract->win, 50, 20, 0xffffff,
+	(fract->type == 's') ? ship(fract) : 0;
+	(fract->type == 'b') ? bird(fract) : 0;
+	mlx_string_put(fract->mlx, fract->win, 0, 0, 0x00ff00, "ZOOM");
+	mlx_string_put(fract->mlx, fract->win, 50, 0, 0xffffff,
 	(tmp = ito(fract->zoom)));
 	free(tmp);
-	mlx_string_put(fract->mlx, fract->win, 0, 40, 0x00ff00, "ITER");
-	mlx_string_put(fract->mlx, fract->win, 50, 40, 0xffffff,
+	mlx_string_put(fract->mlx, fract->win, 0, 20, 0x00ff00, "ITER");
+	mlx_string_put(fract->mlx, fract->win, 50, 20, 0xffffff,
 	(tmp = ito(fract->iter)));
 	free(tmp);
+	if (fract->type == 'j')
+	{
+		mlx_string_put(fract->mlx, fract->win, 0, 40, 0x00ff00, "LOCK");
+		mlx_string_put(fract->mlx, fract->win, 50, 40, 0xffffff,
+		fract->lock ? "1" : "0");
+	}
 }
 
 void		run(t_fract *fract)

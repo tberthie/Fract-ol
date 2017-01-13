@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   julia.c                                            :+:      :+:    :+:   */
+/*   mandelbrot.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tberthie <tberthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/12 12:32:59 by tberthie          #+#    #+#             */
-/*   Updated: 2017/01/13 14:56:00 by tberthie         ###   ########.fr       */
+/*   Created: 2017/01/10 11:36:11 by tberthie          #+#    #+#             */
+/*   Updated: 2017/01/13 17:43:13 by tberthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,21 +19,17 @@ static int		iter(t_fract *fract, long double x, long double y)
 {
 	long double	zr;
 	long double	zi;
-	long double	zrsq;
-	long double	zisq;
+	long double	tmp;
 	int			i;
 
 	i = 0;
-	zr = x;
-	zi = y;
-	zrsq = zr * zr;
-	zisq = zi * zi;
-	while (zrsq + zisq <= 4 && i < fract->iter)
+	zr = 0;
+	zi = 0;
+	while (zr + zi <= 2 && i < fract->iter)
 	{
-		zi = (zr + zi) * (zr + zi) - zrsq - zisq + fract->zi;
-		zr = zrsq - zisq + fract->zr;
-		zrsq = zr * zr;
-		zisq = zi * zi;
+		tmp = ((zr * zr * 3) - zi * zi) * fabsl(zi) + y;
+		zr = (zr * zr - (zi * zi * 3)) * fabsl(zr) + x;
+		zi = tmp;
 		i++;
 	}
 	return (i);
@@ -64,16 +60,16 @@ static int		pixel(t_fract *fract, long double x, long double y)
 
 	zoom = 1 / fract->zoom;
 	x = 2 * (2 * (x - (WINX / 2)) / WINX) * zoom;
-	y = 2 * (y - (WINY / 2)) / WINY * zoom;
+	y = (2 * (y - (WINY / 2)) / WINY) * zoom;
 	i = iter(fract, x, y);
 	return (i != fract->iter) ? color(i / fract->iter) : 0;
 }
 
-void			julia(t_fract *fract)
+void			bird(t_fract *fract)
 {
 	void			*img;
 	char			*pixs;
-	int				color;
+	unsigned int	color;
 	int				i;
 
 	img = mlx_new_image(fract->mlx, WINX, WINY);

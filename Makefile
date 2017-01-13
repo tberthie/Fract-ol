@@ -4,6 +4,8 @@ SRCS = main.c \
 	   bind.c \
 	   mandelbrot.c \
 	   julia.c \
+	   ship.c \
+	   bird.c \
 	   utl.c
 
 OBJS = $(addprefix srcs/,$(SRCS:.c=.o))
