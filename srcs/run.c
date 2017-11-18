@@ -6,24 +6,18 @@
 /*   By: tberthie <tberthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/10 11:30:13 by tberthie          #+#    #+#             */
-/*   Updated: 2017/01/13 17:34:34 by tberthie         ###   ########.fr       */
+/*   Updated: 2017/11/18 22:30:34 by tberthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
 #include "fractol.h"
-
-#include <mlx.h>
 
 void		draw(t_fract *fract)
 {
 	char	*tmp;
 
 	mlx_clear_window(fract->mlx, fract->win);
-	(fract->type == 'm') ? mandelbrot(fract) : 0;
-	(fract->type == 'j') ? julia(fract) : 0;
-	(fract->type == 's') ? ship(fract) : 0;
-	(fract->type == 'b') ? bird(fract) : 0;
+	render(fract);
 	mlx_string_put(fract->mlx, fract->win, 0, 0, 0x00ff00, "ZOOM");
 	mlx_string_put(fract->mlx, fract->win, 50, 0, 0xffffff,
 	(tmp = ito(fract->zoom)));
@@ -47,7 +41,10 @@ void		run(t_fract *fract)
 
 	if (!(mlx = mlx_init()) ||
 	!(win = mlx_new_window(mlx, WINX, WINY, "y u readin dis")))
-		return ((void)ft_errret("fractol", "an error has occured", 0));
+	{
+		ft_print(2, "fractol: an error has occured\n");
+		return ;
+	}
 	fract->mlx = mlx;
 	fract->win = win;
 	draw(fract);

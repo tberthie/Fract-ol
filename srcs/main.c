@@ -6,14 +6,11 @@
 /*   By: tberthie <tberthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/09 20:51:27 by tberthie          #+#    #+#             */
-/*   Updated: 2017/01/13 17:42:37 by tberthie         ###   ########.fr       */
+/*   Updated: 2017/11/18 22:29:04 by tberthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
 #include "fractol.h"
-
-#include <unistd.h>
 
 static int	getfractal(char *str)
 {

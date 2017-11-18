@@ -6,11 +6,12 @@
 /*   By: tberthie <tberthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/28 01:18:44 by tberthie          #+#    #+#             */
-/*   Updated: 2017/01/12 16:22:13 by tberthie         ###   ########.fr       */
+/*   Updated: 2017/05/20 13:52:34 by tberthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <printf.h>
+#include <unistd.h>
 
 int			ft_color(char *s, int i, int *c)
 {

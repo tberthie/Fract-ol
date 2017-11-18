@@ -6,7 +6,7 @@
 /*   By: tberthie <tberthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/26 15:56:27 by tberthie          #+#    #+#             */
-/*   Updated: 2017/01/11 12:26:00 by tberthie         ###   ########.fr       */
+/*   Updated: 2017/05/20 13:51:11 by tberthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ char		*ft_itoabase_uns(unsigned long long n, int b, long long *f, char c)
 	while (n2 >= (unsigned long long)b && (n2 /= b))
 		l++;
 	l = f && f[2] > l ? f[2] : l;
-	if (!(s = ft_strnew(l--)))
+	if (!(s = ft_memalloc(l-- + 1)))
 		return (0);
 	while (n >= (unsigned long long)b)
 	{

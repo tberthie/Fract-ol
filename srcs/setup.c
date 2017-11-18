@@ -6,13 +6,11 @@
 /*   By: tberthie <tberthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/09 21:14:37 by tberthie          #+#    #+#             */
-/*   Updated: 2017/01/12 15:40:11 by tberthie         ###   ########.fr       */
+/*   Updated: 2017/11/18 22:29:24 by tberthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
-
-#include <stdlib.h>
 
 t_fract		*setup(char type)
 {

@@ -6,14 +6,11 @@
 /*   By: tberthie <tberthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/10 11:36:11 by tberthie          #+#    #+#             */
-/*   Updated: 2017/01/13 17:43:35 by tberthie         ###   ########.fr       */
+/*   Updated: 2017/11/18 23:11:29 by tberthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
-
-#include <mlx.h>
-#include <math.h>
 
 static int		iter(t_fract *fract, long double x, long double y)
 {
@@ -53,7 +50,7 @@ static int		color(long double i)
 		return ((int)(2 - 2 * (i -= 0.8575) / 0.1425) << 8);
 }
 
-static int		pixel(t_fract *fract, long double x, long double y)
+int				ship(t_fract *fract, long double x, long double y)
 {
 	long double		i;
 	long double		zoom;
@@ -63,27 +60,4 @@ static int		pixel(t_fract *fract, long double x, long double y)
 	y = (2 * (y - (WINY / 2)) / WINY) * zoom;
 	i = iter(fract, x, y);
 	return (i != fract->iter) ? color(i / fract->iter) : 0;
-}
-
-void			ship(t_fract *fract)
-{
-	void			*img;
-	char			*pixs;
-	unsigned int	color;
-	int				i;
-
-	img = mlx_new_image(fract->mlx, WINX, WINY);
-	pixs = mlx_get_data_addr(img, &(fract->bpp), &(fract->ls), &(fract->end));
-	i = 0;
-	while (i < WINX * WINY)
-	{
-		color = mlx_get_color_value(fract->mlx,
-		pixel(fract, i % WINX + fract->x, i / WINX + fract->y));
-		pixs[0] = color;
-		pixs[1] = color >> 8;
-		pixs[2] = color >> 16;
-		pixs += 4;
-		i++;
-	}
-	mlx_put_image_to_window(fract->mlx, fract->win, img, 0, 0);
 }

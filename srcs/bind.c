@@ -6,11 +6,10 @@
 /*   By: tberthie <tberthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/12 12:41:18 by tberthie          #+#    #+#             */
-/*   Updated: 2017/01/12 17:01:17 by tberthie         ###   ########.fr       */
+/*   Updated: 2017/11/18 22:28:54 by tberthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
 #include "fractol.h"
 
 int		mouse(int button, int x, int y, void *param)

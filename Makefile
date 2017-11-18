@@ -1,45 +1,30 @@
-SRCS = main.c \
-	   setup.c \
-	   run.c \
-	   bind.c \
-	   mandelbrot.c \
-	   julia.c \
-	   ship.c \
-	   bird.c \
-	   utl.c
-
-OBJS = $(addprefix srcs/,$(SRCS:.c=.o))
+OBJS = $(addsuffix .o, $(addprefix objs/, main setup run bind mandelbrot \
+		julia ship bird utl render))
 
 NAME = fractol
-CC = gcc
-FLAGS = -Wall -Wextra -Ofast
-INCS = includes -I libft/includes
-
-GREEN = \x1b[32m
-EOC = \x1b[0m
+INCS = -I includes -I libft
 
 all: $(NAME)
 
-$(NAME): $(OBJS)
-	@echo "$(GREEN)[compiling libft]$(EOC)"
-	@make -C libft
-	@make -C minilibx
-	@gcc $(FLAGS) -o $(NAME) libft/libft.a minilibx/libmlx.a $(OBJS) \
-	-framework OpenGL -framework AppKit
-	@echo "$(GREEN)[$(NAME)]$(EOC)"
+$(NAME): objs $(OBJS)
+	make -C libft
+	make -C minilibx
+	gcc -o $(NAME) -lmlx -framework OpenGL -framework AppKit $(OBJS) \
+	libft/libft.a
 
-srcs/%.o: srcs/%.c
-	@$(CC) $(FLAGS) -I $(INCS) -I minilibx -o $@ -c $<
-	@echo "[$@]"
+objs:
+	mkdir objs
+
+objs/%.o: srcs/%.c
+	gcc -o $@ -c $< $(INCS) -Wall -Wextra -Ofast
+	
 
 clean:
-	@make clean -C libft
-	@rm -f $(OBJS)
-	@echo "$(GREEN)[objs removed]$(EOC)"
+	make clean -C libft
+	rm -rf objs
 
 fclean: clean
-	@make fclean -C libft
-	@rm -f $(NAME)
-	@echo "$(GREEN)[workspace clean]$(EOC)"
+	rm -f libft/libft.a
+	rm -f $(NAME)
 
 re: fclean all

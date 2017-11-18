@@ -6,7 +6,7 @@
 /*   By: tberthie <tberthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/26 13:50:56 by tberthie          #+#    #+#             */
-/*   Updated: 2016/11/30 13:42:50 by tberthie         ###   ########.fr       */
+/*   Updated: 2017/05/22 16:30:41 by tberthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,14 +43,15 @@ static int		ft_out(char *s, char *r, long long *f, int *c)
 {
 	int l;
 
-	l = *s == 'c' ? 1 : ft_strlen(r);
-	l = ft_flags_len(*s, r, f, l);
+	l = ft_flags_len(*s, r, f, *s == 'c' ? 1 : (int)ft_strlen(r));
 	if (*f >> 1 & 1)
 	{
 		ft_out_flags(*s, r, f);
-		if (*r == '-' && (*s == 'd' || *s == 'D' || *s == 'i') &&
-		(r = ft_strcpy(r, r + 1)))
+		if (*r == '-' && (*s == 'd' || *s == 'D' || *s == 'i'))
+		{
+			ft_strcpy(r, r + 1);
 			write(1, "-", 1);
+		}
 	}
 	while ((l < f[1]) && !(*f >> 2 & 1) && (l += 1))
 		write(1, (*f >> 1 & 1 && (!(*s == 'd' || *s == 'D' || *s == 'i' ||
@@ -103,6 +104,5 @@ int				ft_format(char *s, long long *f, va_list ap, int *c)
 		return (ft_pre(s, ft_cast_str(*s, ap), f, c));
 	else if (*s == 'n')
 		return (ft_con_ptr(ap, *f, c));
-	else
-		return (ft_pre(s, ft_strndup(s, 1), f, c));
+	return (ft_pre(s, ft_strndup(s, 1), f, c));
 }

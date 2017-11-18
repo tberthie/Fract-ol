@@ -6,7 +6,7 @@
 /*   By: tberthie <tberthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/26 18:07:48 by tberthie          #+#    #+#             */
-/*   Updated: 2016/11/30 00:19:18 by tberthie         ###   ########.fr       */
+/*   Updated: 2017/05/22 16:29:41 by tberthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ char		*ft_cast_str(char s, va_list ap)
 	c = 0;
 	if (s == 's')
 		return (va_arg(ap, char*));
-	if (s == 'c' && (c = ft_strnew(1)))
+	if (s == 'c' && (c = ft_memalloc(2)))
 	{
 		*c = va_arg(ap, int);
 		return (c);

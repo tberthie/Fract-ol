@@ -6,11 +6,11 @@
 /*   By: tberthie <tberthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/11 17:24:38 by tberthie          #+#    #+#             */
-/*   Updated: 2017/01/11 17:57:43 by tberthie         ###   ########.fr       */
+/*   Updated: 2017/11/18 22:29:35 by tberthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "fractol.h"
 
 char		*ito(long double nb)
 {

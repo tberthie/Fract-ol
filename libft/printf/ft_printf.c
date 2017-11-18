@@ -6,7 +6,7 @@
 /*   By: tberthie <tberthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/18 17:19:45 by tberthie          #+#    #+#             */
-/*   Updated: 2016/11/30 14:30:54 by tberthie         ###   ########.fr       */
+/*   Updated: 2017/05/20 13:14:00 by tberthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,6 @@ int					ft_printf(const char *s, ...)
 	*c = 0;
 	va_start(ap, s);
 	while (s[i])
-	{
 		if (s[i] == '%')
 		{
 			if (!(i = ft_parse((char*)s, i + 1, ap, c)))
@@ -106,7 +105,6 @@ int					ft_printf(const char *s, ...)
 			i = ft_color((char*)s, i, c);
 		else if (((*c) += 1))
 			write(1, &s[i++], 1);
-	}
 	va_end(ap);
 	return (*c);
 }

@@ -6,7 +6,7 @@
 /*   By: tberthie <tberthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/26 15:46:07 by tberthie          #+#    #+#             */
-/*   Updated: 2016/11/29 16:21:00 by tberthie         ###   ########.fr       */
+/*   Updated: 2017/05/22 16:29:36 by tberthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ char		*ft_con_int(long long i, long long *f)
 	while (i2 >= 10 && (i2 /= 10))
 		l++;
 	l = f[2] > l ? f[2] : l;
-	if (!(r = ft_strnew(l-- + (i < 0))))
+	if (!(r = ft_memalloc(l-- + (i < 0) + 1)))
 		return (0);
 	i2 = i < 0 ? -i : i;
 	while (i2 >= 10)
