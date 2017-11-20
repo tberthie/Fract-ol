@@ -6,7 +6,7 @@
 /*   By: tberthie <tberthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/09 20:55:33 by tberthie          #+#    #+#             */
-/*   Updated: 2017/11/19 16:31:03 by tberthie         ###   ########.fr       */
+/*   Updated: 2017/11/20 20:14:38 by tberthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@
 # include <math.h>
 # include <pthread.h>
 
-# define WINX	2250
-# define WINY	1250
+# define WINX	2000
+# define WINY	1200
 
 # define ITER	50
 # define THREAD	8
