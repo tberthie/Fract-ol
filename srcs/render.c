@@ -6,7 +6,7 @@
 /*   By: tberthie <tberthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/18 22:29:10 by tberthie          #+#    #+#             */
-/*   Updated: 2017/11/28 18:05:34 by tberthie         ###   ########.fr       */
+/*   Updated: 2017/11/28 21:01:40 by tberthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ void					render(t_fract *fract)
 		pthread_join(id[i], 0);
 		free(thread[i++]);
 	}
+	fract->type == 'a' ? arbre(fract) : 0;
 	mlx_put_image_to_window(fract->mlx, fract->win, fract->img, 0, 0);
 	mlx_destroy_image(fract->mlx, fract->img);
 }

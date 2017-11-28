@@ -6,7 +6,7 @@
 /*   By: tberthie <tberthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/09 20:51:27 by tberthie          #+#    #+#             */
-/*   Updated: 2017/11/28 18:07:55 by tberthie         ###   ########.fr       */
+/*   Updated: 2017/11/28 20:59:22 by tberthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ static int	getfractal(char *str)
 		return ('t');
 	if (!ft_strcmp(str, "tapis"))
 		return ('T');
+	if (!ft_strcmp(str, "arbre"))
+		return ('a');
 	return (0);
 }
 

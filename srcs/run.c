@@ -6,7 +6,7 @@
 /*   By: tberthie <tberthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/10 11:30:13 by tberthie          #+#    #+#             */
-/*   Updated: 2017/11/28 18:14:48 by tberthie         ###   ########.fr       */
+/*   Updated: 2017/11/28 21:06:37 by tberthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,18 @@ void		draw(t_fract *fract)
 
 	mlx_clear_window(fract->mlx, fract->win);
 	render(fract);
-	mlx_string_put(fract->mlx, fract->win, 0, 0, 0x00ff00, "ZOOM");
-	mlx_string_put(fract->mlx, fract->win, 50, 0, 0xffffff,
-	(tmp = fract->zoom < 1 ? ft_strdup("0.5") : ito(fract->zoom)));
-	free(tmp);
+	if (fract->type != 'a')
+	{
+		mlx_string_put(fract->mlx, fract->win, 0, 0, 0x00ff00, "ZOOM");
+		mlx_string_put(fract->mlx, fract->win, 50, 0, 0xffffff,
+		(tmp = fract->zoom < 1 ? ft_strdup(".5") : ito(fract->zoom)));
+		free(tmp);
+	}
 	if (fract->type != 'T')
 	{
 		mlx_string_put(fract->mlx, fract->win, 0, 20, 0x00ff00, "ITER");
 		mlx_string_put(fract->mlx, fract->win, 50, 20, 0xffffff,
-		(tmp = ito(fract->iter)));
+		(tmp = ito(fract->iter * (fract->type == 'a' ? 0.1 : 1))));
 		free(tmp);
 	}
 	if (fract->type == 'j')
