@@ -6,7 +6,7 @@
 /*   By: tberthie <tberthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/09 20:55:33 by tberthie          #+#    #+#             */
-/*   Updated: 2017/11/28 18:07:54 by tberthie         ###   ########.fr       */
+/*   Updated: 2017/11/28 18:13:16 by tberthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ typedef struct		s_fract
 	char		*pixs;
 
 	int			iter;
-	float		zoom;
+	long double	zoom;
 	long double	x;
 	long double	y;
 	long double	zr;

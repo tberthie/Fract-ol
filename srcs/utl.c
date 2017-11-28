@@ -6,7 +6,7 @@
 /*   By: tberthie <tberthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/11 17:24:38 by tberthie          #+#    #+#             */
-/*   Updated: 2017/11/25 15:57:55 by tberthie         ###   ########.fr       */
+/*   Updated: 2017/11/28 18:17:22 by tberthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ char		*ito(long double nb)
 		n /= 10;
 	}
 	s[len] = n % 10 + '0';
+	if ((s[0] <= '0' || s[0] >= '9') && ft_freeret(s, 1))
+		return (ft_strdup("WTF ARE YOU DOING"));
 	return (s);
 }
 

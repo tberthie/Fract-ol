@@ -6,7 +6,7 @@
 /*   By: tberthie <tberthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/10 11:30:13 by tberthie          #+#    #+#             */
-/*   Updated: 2017/11/28 18:05:54 by tberthie         ###   ########.fr       */
+/*   Updated: 2017/11/28 18:14:48 by tberthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void		draw(t_fract *fract)
 	render(fract);
 	mlx_string_put(fract->mlx, fract->win, 0, 0, 0x00ff00, "ZOOM");
 	mlx_string_put(fract->mlx, fract->win, 50, 0, 0xffffff,
-	(tmp = ito(fract->zoom)));
+	(tmp = fract->zoom < 1 ? ft_strdup("0.5") : ito(fract->zoom)));
 	free(tmp);
 	if (fract->type != 'T')
 	{
