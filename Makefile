@@ -1,5 +1,5 @@
 OBJS = $(addsuffix .o, $(addprefix objs/, main setup run bind mandelbrot \
-		julia ship bird utl render))
+		julia ship bird tricorn tapis utl render))
 
 NAME = fractol
 INCS = -I includes -I libft

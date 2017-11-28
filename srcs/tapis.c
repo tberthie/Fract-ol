@@ -6,44 +6,29 @@
 /*   By: tberthie <tberthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/10 11:36:11 by tberthie          #+#    #+#             */
-/*   Updated: 2017/11/28 17:49:05 by tberthie         ###   ########.fr       */
+/*   Updated: 2017/11/28 18:06:10 by tberthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-static int		iter(t_fract *fract, long double x, long double y)
+int				tapis(t_fract *fract, long double x, long double y)
 {
-	long double	zr;
-	long double	zi;
-	long double	zrsq;
-	long double	zisq;
-	int			i;
-
-	i = 0;
-	zr = 0;
-	zi = 0;
-	zrsq = 0;
-	zisq = 0;
-	while (zrsq + zisq <= 4 && i < fract->iter)
-	{
-		zi = (zr + zi) * (zr + zi) - zrsq - zisq + y;
-		zr = zrsq - zisq + x;
-		zrsq = zr * zr;
-		zisq = zi * zi;
-		i++;
-	}
-	return (i);
-}
-
-int				mandelbrot(t_fract *fract, long double x, long double y)
-{
-	long double		i;
-	long double		zoom;
+	long double zoom;
+	int			rx;
+	int			ry;
 
 	zoom = 1 / fract->zoom;
-	x = -0.75 + 1.75 * (2 * (x - (WINX / 2)) / WINX) * zoom;
-	y = 1 * (2 * (y - (WINY / 2)) / WINY) * zoom;
-	i = iter(fract, x, y);
-	return (i != fract->iter) ? color(i / fract->iter) : 0;
+	rx = WINX * (2 * (x - (WINX / 2)) / WINX) * zoom;
+	rx = rx + (rx < 0) * -rx * 2;
+	ry = WINY * (2 * (y - (WINY / 2)) / WINY) * zoom;
+	ry = ry + (ry < 0) * -ry * 2;
+	while (rx > 0 || ry > 0)
+	{
+		if (rx % 3 == 1 && ry % 3 == 1)
+			return (0x2050a0);
+		rx /= 3;
+		ry /= 3;
+	}
+	return (0);
 }

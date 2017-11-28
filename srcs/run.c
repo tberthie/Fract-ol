@@ -6,7 +6,7 @@
 /*   By: tberthie <tberthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/10 11:30:13 by tberthie          #+#    #+#             */
-/*   Updated: 2017/11/18 22:30:34 by tberthie         ###   ########.fr       */
+/*   Updated: 2017/11/28 18:05:54 by tberthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,13 @@ void		draw(t_fract *fract)
 	mlx_string_put(fract->mlx, fract->win, 50, 0, 0xffffff,
 	(tmp = ito(fract->zoom)));
 	free(tmp);
-	mlx_string_put(fract->mlx, fract->win, 0, 20, 0x00ff00, "ITER");
-	mlx_string_put(fract->mlx, fract->win, 50, 20, 0xffffff,
-	(tmp = ito(fract->iter)));
-	free(tmp);
+	if (fract->type != 'T')
+	{
+		mlx_string_put(fract->mlx, fract->win, 0, 20, 0x00ff00, "ITER");
+		mlx_string_put(fract->mlx, fract->win, 50, 20, 0xffffff,
+		(tmp = ito(fract->iter)));
+		free(tmp);
+	}
 	if (fract->type == 'j')
 	{
 		mlx_string_put(fract->mlx, fract->win, 0, 40, 0x00ff00, "LOCK");

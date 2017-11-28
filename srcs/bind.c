@@ -6,7 +6,7 @@
 /*   By: tberthie <tberthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/12 12:41:18 by tberthie          #+#    #+#             */
-/*   Updated: 2017/11/18 22:28:54 by tberthie         ###   ########.fr       */
+/*   Updated: 2017/11/25 15:39:02 by tberthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,9 @@ int		key(int keycode, void *param)
 	else if (keycode == 51)
 	{
 		fract->iter = ITER;
-		fract->zoom = 1;
 		fract->x = 0;
 		fract->y = 0;
+		fract->zoom = 1;
 	}
 	else if (keycode == 13 || keycode == 1)
 		fract->y += (keycode == 1 ? 1 : -1) * (WINY / 50);

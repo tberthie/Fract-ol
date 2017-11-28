@@ -6,7 +6,7 @@
 /*   By: tberthie <tberthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/09 21:14:37 by tberthie          #+#    #+#             */
-/*   Updated: 2017/11/18 22:29:24 by tberthie         ###   ########.fr       */
+/*   Updated: 2017/11/25 15:58:36 by tberthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_fract		*setup(char type)
 	if (!(fract = malloc(sizeof(t_fract))))
 		return (0);
 	fract->type = type;
-	fract->zoom = 1;
+	fract->zoom = 0.5;
 	fract->x = 0;
 	fract->y = 0;
 	fract->zr = 0;

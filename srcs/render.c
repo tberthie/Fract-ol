@@ -6,7 +6,7 @@
 /*   By: tberthie <tberthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/18 22:29:10 by tberthie          #+#    #+#             */
-/*   Updated: 2017/11/20 18:19:16 by tberthie         ###   ########.fr       */
+/*   Updated: 2017/11/28 18:05:34 by tberthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,12 @@ static unsigned int		calculate_pixel(t_fract *fract, unsigned int i)
 	if (fract->type == 's')
 		color = mlx_get_color_value(fract->mlx,
 		ship(fract, i % WINX + fract->x, i / WINX + fract->y));
+	if (fract->type == 't')
+		color = mlx_get_color_value(fract->mlx,
+		tricorn(fract, i % WINX + fract->x, i / WINX + fract->y));
+	if (fract->type == 'T')
+		color = mlx_get_color_value(fract->mlx,
+		tapis(fract, i % WINX + fract->x, i / WINX + fract->y));
 	return (color);
 }
 
@@ -79,4 +85,5 @@ void					render(t_fract *fract)
 		free(thread[i++]);
 	}
 	mlx_put_image_to_window(fract->mlx, fract->win, fract->img, 0, 0);
+	mlx_destroy_image(fract->mlx, fract->img);
 }

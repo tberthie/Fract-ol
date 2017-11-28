@@ -6,7 +6,7 @@
 /*   By: tberthie <tberthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/10 11:36:11 by tberthie          #+#    #+#             */
-/*   Updated: 2017/11/28 17:49:05 by tberthie         ###   ########.fr       */
+/*   Updated: 2017/11/25 15:53:30 by tberthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static int		iter(t_fract *fract, long double x, long double y)
 	zisq = 0;
 	while (zrsq + zisq <= 4 && i < fract->iter)
 	{
-		zi = (zr + zi) * (zr + zi) - zrsq - zisq + y;
+		zi = (zr - zi) * (zr - zi) - zrsq - zisq + y;
 		zr = zrsq - zisq + x;
 		zrsq = zr * zr;
 		zisq = zi * zi;
@@ -36,7 +36,7 @@ static int		iter(t_fract *fract, long double x, long double y)
 	return (i);
 }
 
-int				mandelbrot(t_fract *fract, long double x, long double y)
+int				tricorn(t_fract *fract, long double x, long double y)
 {
 	long double		i;
 	long double		zoom;
