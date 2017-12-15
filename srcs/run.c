@@ -6,7 +6,7 @@
 /*   By: tberthie <tberthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/10 11:30:13 by tberthie          #+#    #+#             */
-/*   Updated: 2017/12/14 17:21:24 by tberthie         ###   ########.fr       */
+/*   Updated: 2017/12/15 19:51:28 by tberthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,12 @@ void		draw(t_fract *fract)
 	}
 }
 
+static int	close_bind(void *param)
+{
+	param = 0;
+	exit(0);
+}
+
 void		run(t_fract *fract)
 {
 	void	*mlx;
@@ -55,6 +61,7 @@ void		run(t_fract *fract)
 	fract->win = win;
 	draw(fract);
 	mlx_hook(fract->win, 6, (1L << 6), move, fract);
+	mlx_hook(fract->win, 17, 0, close_bind, 0);
 	mlx_key_hook(fract->win, key, fract);
 	mlx_mouse_hook(fract->win, mouse, fract);
 	mlx_expose_hook(fract->win, expose, fract);

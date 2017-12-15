@@ -6,7 +6,7 @@
 /*   By: tberthie <tberthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/10 11:36:11 by tberthie          #+#    #+#             */
-/*   Updated: 2017/12/15 19:40:00 by tberthie         ###   ########.fr       */
+/*   Updated: 2017/12/15 19:46:51 by tberthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ static void		draw_line(t_fract *fract, int *coords)
 static void		draw_triangle(t_fract *fract, int *coords, int iter)
 {
 	int		*new;
+	int		i;
 
 	new = (int*)ft_memalloc(24);
 	ft_memcpy(new, coords, 24);
@@ -44,26 +45,20 @@ static void		draw_triangle(t_fract *fract, int *coords, int iter)
 	draw_line(fract, coords + 2);
 	ft_memcpy(coords + 2, coords + 4, 8);
 	draw_line(fract, coords);
-
-	if (iter)
+	i = 0;
+	while (iter && i < 3)
 	{
-		int i = 0;
-		while (i < 3)
-		{
-			ft_memcpy(coords, new, 24);
-			coords[0] -= (i == 1) * ((new[4] - new[2]) / 4);
-			coords[0] += (i == 2) * ((new[4] - new[2]) / 4);
-			coords[1] += (i > 0) * ((new[3] - new[1]) / 2);
-			coords[2] += (i == 0) * ((new[4] - new[2]) / 4);
-			coords[3] -= (i == 0) * ((new[3] - new[1]) / 2);
-			coords[4] -= (i == 0) * ((new[4] - new[2]) / 4);
-			coords[5] -= (i == 0) * ((new[3] - new[1]) / 2);
-			coords[4] -= (i == 1) * ((new[4] - new[2]) / 2);
-			coords[2] += (i == 2) * ((new[4] - new[2]) / 2);
-			draw_triangle(fract, coords, iter - 1);
-			i++;
-		}
-		// recurse
+		ft_memcpy(coords, new, 24);
+		coords[0] -= (i == 1) * ((new[4] - new[2]) / 4);
+		coords[0] += (i == 2) * ((new[4] - new[2]) / 4);
+		coords[1] += (i > 0) * ((new[3] - new[1]) / 2);
+		coords[2] += (i == 0) * ((new[4] - new[2]) / 4);
+		coords[3] -= (i == 0) * ((new[3] - new[1]) / 2);
+		coords[4] -= (i == 0) * ((new[4] - new[2]) / 4);
+		coords[5] -= (i == 0) * ((new[3] - new[1]) / 2);
+		coords[4] -= (i == 1) * ((new[4] - new[2]) / 2);
+		coords[2] += (i++ == 2) * ((new[4] - new[2]) / 2);
+		draw_triangle(fract, coords, iter - 1);
 	}
 	free(new);
 }
