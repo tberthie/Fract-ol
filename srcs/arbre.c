@@ -6,7 +6,7 @@
 /*   By: tberthie <tberthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/10 11:36:11 by tberthie          #+#    #+#             */
-/*   Updated: 2017/11/28 22:30:47 by tberthie         ###   ########.fr       */
+/*   Updated: 2017/12/15 18:52:02 by tberthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static void		draw_line(t_fract *fract, int *coords, int iter)
 
 	diff[0] = coords[2] - coords[0];
 	diff[1] = coords[3] - coords[1];
-	len = sqrt(pow(diff[0], 2) + pow(diff[1], 2));
+	len = sqrt(pow(diff[0], 2) + pow(diff[1], 2)) + 1;
 	i = 0;
 	while (i <= len)
 	{

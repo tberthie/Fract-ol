@@ -6,7 +6,7 @@
 /*   By: tberthie <tberthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/09 20:55:33 by tberthie          #+#    #+#             */
-/*   Updated: 2017/11/28 20:59:28 by tberthie         ###   ########.fr       */
+/*   Updated: 2017/12/07 22:14:26 by tberthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 
 # define WINX	2000
 # define WINY	1200
-# define USAGE	"julia/mandelbrot/bird/ship/tricorn/tapis/arbre"
+# define LIST	"julia mandelbrot bird ship tricorn tapis arbre triangle"
 
 # define ITER	50
 # define THREAD	8
@@ -62,6 +62,7 @@ int					bird(t_fract *fract, long double x, long double y);
 int					tricorn(t_fract *fract, long double x, long double y);
 int					tapis(t_fract *fract, long double x, long double y);
 void				arbre(t_fract *fract);
+void				triangle(t_fract *fract);
 
 int					mouse(int button, int x, int y, void *param);
 int					key(int key, void *param);

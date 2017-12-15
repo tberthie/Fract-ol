@@ -6,7 +6,7 @@
 /*   By: tberthie <tberthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/09 20:51:27 by tberthie          #+#    #+#             */
-/*   Updated: 2017/11/28 20:59:22 by tberthie         ###   ########.fr       */
+/*   Updated: 2017/12/15 17:32:13 by tberthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ static int	getfractal(char *str)
 		return ('T');
 	if (!ft_strcmp(str, "arbre"))
 		return ('a');
+	if (!ft_strcmp(str, "triangle"))
+		return ('r');
 	return (0);
 }
 
@@ -37,7 +39,10 @@ int			main(int ac, char **av)
 	int			type;
 
 	if (ac != 2 || !(type = getfractal(av[1])))
-		ft_print(2, "usage: fractol [%s]\n", USAGE);
+	{
+		ft_print(2, "%susage: ./fractol [type]%s\n", RED, EOC);
+		ft_print(2, "list: %s\n", LIST);
+	}
 	else if ((fract = setup(type)))
 		run(fract);
 	return (0);
